@@ -1,0 +1,174 @@
+
+/* ==========================================
+   MOON DESIGN
+   CANVAS VISUAL ENGINE
+   ========================================== */
+
+/* Workspace */
+
+.workspace {
+  background: #080d0b;
+}
+
+.stage {
+  position: relative;
+  overflow: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 70px;
+}
+
+/* Actual design surface */
+
+#canvas {
+  position: relative;
+  width: 900px;
+  height: 560px;
+  min-width: 900px;
+  min-height: 560px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 20px 70px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(192, 212, 195, 0.12);
+
+  transform-origin: top left;
+  flex-shrink: 0;
+}
+
+/* Canvas objects */
+
+.object {
+  position: absolute;
+  cursor: move;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.object:hover {
+  outline: 1px solid rgba(8, 124, 80, 0.6);
+}
+
+.object.selected {
+  outline: 1px solid #079b65;
+  outline-offset: 1px;
+}
+
+/* Resize handles */
+
+.moon-resize-handle {
+  width: 9px;
+  height: 9px;
+
+  background: #087c50;
+  border: 1px solid white;
+  border-radius: 2px;
+
+  position: absolute;
+  z-index: 1000;
+}
+
+.moon-resize-handle:hover {
+  background: #16c783;
+  transform: scale(1.25);
+}
+
+/* Selection indicators */
+
+.selection-outline {
+  position: absolute;
+  border: 1px solid #10a66b;
+  pointer-events: none;
+}
+
+.selection-label {
+  position: absolute;
+  top: -24px;
+  left: 0;
+
+  background: #087c50;
+  color: white;
+
+  padding: 3px 7px;
+  border-radius: 3px;
+
+  font-family: 'Alegreya', serif;
+  font-size: 11px;
+}
+
+/* Zoom controls */
+
+#moonZoom {
+  color: #c6d2c9;
+  background: #101c16;
+  border: 1px solid rgba(151, 190, 165, 0.2);
+  min-width: 60px;
+}
+
+/* Grid */
+
+.moon-grid {
+  background-image:
+    linear-gradient(
+      rgba(8, 124, 80, 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(8, 124, 80, 0.1) 1px,
+      transparent 1px
+    );
+
+  background-size: 10px 10px;
+}
+
+/* Empty canvas state */
+
+.canvas-empty {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #9ba99e;
+  font-family: 'Alegreya', serif;
+  font-size: 23px;
+
+  pointer-events: none;
+}
+
+/* Canvas guides */
+
+.moon-guide-horizontal,
+.moon-guide-vertical {
+  position: absolute;
+  background: #10a66b;
+  pointer-events: none;
+  z-index: 2000;
+}
+
+.moon-guide-horizontal {
+  height: 1px;
+  width: 100%;
+}
+
+.moon-guide-vertical {
+  width: 1px;
+  height: 100%;
+}
+
+/* Mobile */
+
+@media(max-width: 850px) {
+  .stage {
+    padding: 25px;
+  }
+
+  #canvas {
+    transform-origin: top left;
+  }
+}
